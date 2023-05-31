@@ -13,4 +13,4 @@ Team Members:
 Company: PukulEnam
 
 # Content-Based Filtering Recommendation System for Author Selection (Back-End)
-**Case: Talent Reccomender System (Back-End)**
+**Case: Talent Recommender System (Back-End)**
