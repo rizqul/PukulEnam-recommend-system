@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Sistem Rekomendasi</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+        <link rel="stylesheet" href="styles/style.css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    </head>
+    <body>
+        <div class="container user-form">
+            <form method="post" id="temp-form">
+                <h3 class="judul">Sistem Rekomendasi Penulis PukulEnam</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtTitle" class="form-control" placeholder="Input your title ..." id="inputTitle">
+                        </div>
+
+                        <div class="radio-container">
+                            <input type="radio" id="radioCw" name="btnRole" value="Copywriting">
+                            <label for="radioCw">Copywriting</label>
+
+                            <input type="radio" id="radioDg" name="btnRole" value="Design">
+                            <label for="radioDg">Design</label>
+                        </div>
+
+                        <div class="radio-container">
+                            <input type="radio" id="radioNasional" name="btnType" value="Nasional">
+                            <label for="radioNasional">Nasional</label>
+
+                            <input type="radio" id="radioInternasional" name="btnType" value="Internasional">
+                            <label for="radioNasional">Internasional</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="button" value="Cari Rekomendasi">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h2>Hasil Rekomendasi</h2>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="scripts.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>
