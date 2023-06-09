@@ -1,5 +1,5 @@
 # ML
-Sistem rekomendasi penulis menggunakan content-based filtering dan memperhitungkan preferensi pengguna terkait judul berita, peran penulis (copywriting/design), jenis berita (nasional/internasional), dan hari ketersediaan penulis.
+The author recommendation system utilizes content-based filtering and user preferences related to news titles, author roles (copywriting/design), news types (national/international), and author availability on specific days.
 
 Langkah-langkah yang dilakukan :
 
