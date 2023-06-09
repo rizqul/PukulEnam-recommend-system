@@ -24,13 +24,17 @@ Data yang digunakan merupakan data historical_news dari PukulEnam dan kaggle yan
       
 3. Membangun Model Content-Based Filtering
     - User-Profile Creation
+    
       Berdasarkan input pengguna, buat profil pengguna dengan menggabungkan vektor fitur yang relevan yang berkaitan dengan preferensi pengguna. 
       Kemudian buat vektor profil pengguna yang menggabungkan vektor fitur judul berita dari hasil prediksi, peran, dan jenis yang sesuai.
     - Normalization
+    
       Data penulis yang berisi fitur-fitur numerik dari skala 0-5 yang mengindikasikan kemampuan dari penulis-penulis tersebut, akan dilakukan normalisasi untuk berada di range 0-1 agar skalanya sama dengan vektor profil pengguna.
     - Similarity Calculation
+    
       Hitung kesamaan antara vektor profil pengguna dan vektor fitur penulis dalam dataset. Ini dapat dilakukan dengan menggunakan metrik kesamaan seperti cosine similarity. Semakin tinggi kesamaan kosinus, semakin mirip profil pengguna dengan penulis tertentu.
     - Ranking and Recommendation
+    
        Urutkan penulis berdasarkan skor kesamaan dengan vektor profil pengguna. Penulis dengan skor kesamaan tertinggi dianggap paling relevan dan dapat direkomendasikan kepada pengguna. Setelah itu dilakukan filter untuk mencari kebutuhan user akan kesediaan penulis di hari yang diinginkan.
 
 4. Deployment menggunakan Tensorflow.js pada web browser. Model TensorFlow yang telah dilatih dikonversi ke format yang dapat digunakan oleh TensorFlow.js.
