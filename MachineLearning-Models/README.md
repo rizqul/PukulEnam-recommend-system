@@ -33,5 +33,4 @@ Data yang digunakan merupakan data historical_news dari PukulEnam dan kaggle yan
     - Ranking and Recommendation
        Urutkan penulis berdasarkan skor kesamaan dengan vektor profil pengguna. Penulis dengan skor kesamaan tertinggi dianggap paling relevan dan dapat direkomendasikan kepada pengguna. Setelah itu dilakukan filter untuk mencari kebutuhan user akan kesediaan penulis di hari yang diinginkan.
 
-4. Deployment
-   Deployment menggunakan Tensorflow.js pada web browser. Model TensorFlow yang telah dilatih dikonversi ke format yang dapat digunakan oleh TensorFlow.js.
+4. Deployment menggunakan Tensorflow.js pada web browser. Model TensorFlow yang telah dilatih dikonversi ke format yang dapat digunakan oleh TensorFlow.js.
