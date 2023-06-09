@@ -11,10 +11,21 @@ Data yang digunakan merupakan data historical_news dari PukulEnam dan kaggle yan
       ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/b28210b0-495d-4d82-a34b-c847c9b8d9ff)
     - Evaluasi Model
       Hasil akurasi diperoleh :
+      
       ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/0ae2d6f2-5334-44f4-92bd-55ab6aaf7792)
+      
       Hasil loss diperoleh :
+      
       ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/c90d8274-ce10-4f1c-a9d7-4d546c93f67f)
+    
+    - Prediksi
+    
+      ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/84936479-bdd4-4a46-82e5-465afc57489e)
       
 3. Membangun Model Content-Based Filtering
-    - Membuat User-Profile
+    - User-Profile Creation
+      Berdasarkan input pengguna, buat profil pengguna dengan menggabungkan vektor fitur yang relevan yang berkaitan dengan preferensi pengguna. 
+    - Normalization
+    - Similarity Calculation
+    - Ranking and Recommendation
 
