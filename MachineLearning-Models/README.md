@@ -10,7 +10,10 @@ Data yang digunakan merupakan data historical_news dari PukulEnam dan kaggle yan
       Model yang digunakan adalah model BiLSTM. Berikut arsitektur model BiLSTM yang digunakan : 
       ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/b28210b0-495d-4d82-a34b-c847c9b8d9ff)
     - Evaluasi Model
-      Hasil akurasi dan loss yang diperoleh :
+      Hasil akurasi diperoleh :
+      ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/0ae2d6f2-5334-44f4-92bd-55ab6aaf7792)
+      Hasil loss diperoleh :
+      ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/c90d8274-ce10-4f1c-a9d7-4d546c93f67f)
       
 3. Membangun Model Content-Based Filtering
     - Membuat User-Profile
