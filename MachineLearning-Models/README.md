@@ -13,7 +13,7 @@ Data yang digunakan merupakan data historical_news dari PukulEnam dan kaggle yan
       Preprocessing teks dilakukan pada data historical_news, terdiri dari menghapus punctuation, menyamakan semua huruf menjadi huruf kecil, menghapus stopwords, membersihkan teks dari tanda baca numerik, dan melakukan stemming. Kemudian mengkonversi setiap kata menjadi representasi numerik. 
     - Build Model
     
-      Model yang digunakan adalah model BiLSTM. Berikut arsitektur model BiLSTM yang digunakan : 
+      Model yang digunakan adalah model BiLSTM. Layer dimulai dari Embedding Layer dengan ukuran 100 dimensi kemudian LSTM didalam layer Bidirectional. Di layer LSTM ditambahkan dropout. Berikut arsitektur model BiLSTM yang digunakan : 
       ![image](https://github.com/rizqul/PukulEnam-recommend-system/assets/54715329/b28210b0-495d-4d82-a34b-c847c9b8d9ff)
     - Evaluasi Model
     
