@@ -5,7 +5,7 @@ let stopwords;
 let authors;
 
 const maxlen = 120;
-let cbf_feature = ['Copywriting', 'Design', 'Nasional', 'Internasional', 'Health', 'Finance', 'Tech', 'Sports', 'Gaming','Entertainment']
+let cbf_feature = ['Copywriting', 'Design', 'Nasional', 'Internasional', 'Health', 'Finance', 'Technology', 'Sports', 'Gaming','Entertainment']
 
 // INPUTAN USER
 function getInput(){
@@ -33,13 +33,6 @@ function clean_text(text) {
   const lowerText = removedPunctuation.toLowerCase();
   const words = lowerText.split(/\s+/);
   const removedStopwords = words.filter(word => !stopwords.includes(word));
-  // const stemmed = [];
-  // const stemmer = new sastrawi.Stemmer();
-  // for (word of removedStopwords) {
-  //     stemmed.push(stemmer.stem(word));
-  // }
-  // return stemmed;
-  // console.log(removedStopwords);
   return removedStopwords
 }
 
@@ -124,7 +117,8 @@ function onClick(){
   const hari = getDay();
   const topic_preferences = predict(inputText);
   const userFeatureVector = userFeatures(select, topic_preferences);
-  
+  console.log(topic_preferences);
+
   const authorFeatures = authors.map(author => cbf_feature.map(feature => author[feature]));
   const normalizedAuthorFeatures = normalizeFeatures(authorFeatures);
   const filteredAuthors = authors.filter(author => hari.every(day => author['Available Days'].includes(day)));
@@ -158,28 +152,14 @@ async function init(){
   model = await tf.loadLayersModel('https://raw.githubusercontent.com/rizqul/PukulEnam-recommend-system/main/recommender/tfjs_model/model.json');
   isModelLoaded = true;
   // MEMANGGIL WORD_INDEX
-  const word_indexjson = await fetch('https://raw.githubusercontent.com/rizqul/PukulEnam-recommend-system/main/recommender/word_index.json')
+  const word_indexjson = await fetch('https://raw.githubusercontent.com/rizqul/PukulEnam-recommend-system/main/recommender/word_index.json');
   word2index = await word_indexjson.json();
   // MEMANGGIL STOPWORDS
   const stopwords_id = await fetch('https://raw.githubusercontent.com/rizqul/PukulEnam-recommend-system/main/recommender/stopwords-id.json');
   stopwords = await stopwords_id.json()
 
-  authors = [
-    { 'Name': 'Aditya', 'Copywriting': 4, 'Design': 2, 'Available Days': ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'], 'Nasional': 4, 'Internasional': 5, 'Health':5, 'Finance': 2, 'Tech': 3, 'Sports': 0.5, 'Gaming': 0, 'Entertainment': 0.5},
-    { 'Name': 'Andhika Mifta Alauddin', 'Copywriting': 4, 'Design': 3, 'Available Days': ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'], 'Nasional': 5, 'Internasional': 4, 'Health':1, 'Finance': 1, 'Tech': 3, 'Sports': 3, 'Gaming': 5, 'Entertainment': 3},
-    { 'Name': 'Ni Nyoman Ayu Sintya Dewi', 'Copywriting': 4, 'Design': 3, 'Available Days': ['Senin', 'Selasa', 'Rabu', 'Jumat', 'Sabtu'], 'Nasional':4, 'Internasional':3,  'Health':3, 'Finance':4, 'Tech':4, 'Sports':1, 'Gaming':2, 'Entertainment':3},
-    { 'Name': 'Dewa Bagus Trima Putra', 'Copywriting': 4, 'Design': 5,'Available Days': ['Rabu', 'Jumat'], 'Nasional':4, 'Internasional':4, 'Health':3, 'Finance':5, 'Tech':4, 'Sports':3, 'Gaming':3, 'Entertainment':5},
-    { 'Name': 'Patma Ari Ayu Kartini', 'Copywriting': 4, 'Design': 4, 'Available Days':['Selasa', 'Jumat'], 'Nasional':4, 'Internasional':4, 'Health':4, 'Finance':4, 'Tech':4, 'Sports':3, 'Gaming':3, 'Entertainment':4},
-    { 'Name': 'Risa Pebriyanthi', 'Copywriting':4, 'Design':2, 'Available Days':['Selasa', 'Sabtu'], 'Nasional':5, 'Internasional':3, 'Health':3, 'Finance':4.5, 'Tech':2, 'Sports':1, 'Gaming':1, 'Entertainment':2},
-    { 'Name': 'Suci Hastika Salmaaini', 'Copywriting':5, 'Design':5, 'Available Days':['Rabu', 'Kamis'], 'Nasional':5, 'Internasional':4, 'Health':3, 'Finance':4.5, 'Tech':4.5, 'Sports':2, 'Gaming':3, 'Entertainment':3},
-    { 'Name': 'Ni Luh Santi Wahyuni', 'Copywriting':4, 'Design':2, 'Available Days':['Rabu'], 'Nasional':5, 'Internasional':3, 'Health':2, 'Finance':4, 'Tech':2, 'Sports':1, 'Gaming':1, 'Entertainment':2.5},
-    { 'Name': 'Andre Winata', 'Copywriting':4, 'Design':4,'Available Days':['Senin', 'Rabu', 'Minggu'], 'Nasional':4, 'Internasional':4, 'Health':1.5, 'Finance':2, 'Tech':5, 'Sports':4, 'Gaming':3, 'Entertainment':2},
-    { 'Name': 'Iga Narendra Pramawijaya', 'Copywriting':4, 'Design':1, 'Available Days':['Sabtu', 'Minggu'], 'Nasional':3, 'Internasional':4, 'Health':2, 'Finance':4, 'Tech':5, 'Sports':3, 'Gaming':3, 'Entertainment':1},
-    { 'Name': 'Nyoman Satiya Nanjaya Sadha', 'Copywriting':2, 'Design':2, 'Available Days':['Sabtu', 'Minggu'], 'Nasional':2, 'Internasional':3, 'Health':4, 'Finance':0, 'Tech':3, 'Sports':3, 'Gaming':2, 'Entertainment':0},
-    { 'Name': 'Abiyyu Didar Haq', 'Copywriting':5, 'Design':5, 'Available Days':['Sabtu', 'Minggu'], 'Nasional':2, 'Internasional':4, 'Health':5, 'Finance':0, 'Tech':3, 'Sports':3, 'Gaming':1, 'Entertainment':0},
-    { 'Name': 'Putu Gede Arya Karna Sampalan', 'Copywriting':4, 'Design':4, 'Available Days':['Jumat', 'Sabtu'], 'Nasional':4, 'Internasional':4, 'Health':3, 'Finance':5, 'Tech':4, 'Sports':3, 'Gaming':4, 'Entertainment':3},
-    { 'Name': 'Visakha Vidyadevi Wiguna', 'Copywriting':5, 'Design':5,'Available Days':['Sabtu', 'Minggu'], 'Nasional':5, 'Internasional':4, 'Health':5, 'Finance':0, 'Tech':0, 'Sports':0, 'Gaming':2, 'Entertainment':5}
-  ];
-  // console.log(model.summary());
+  const newsroom_datajson = await fetch('https://raw.githubusercontent.com/rizqul/PukulEnam-recommend-system/main/recommender/Newsroom_data.json');
+  authors = await newsroom_datajson.json();
+
 }
 init()
